@@ -1,0 +1,161 @@
+/* //////////////////////////////// */
+/*   styling for normal html tags   */
+/* //////////////////////////////// */
+html {
+    /* Font size at 100% is 16 pixels */
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background-color: black;
+}
+
+body {
+    background-color: black;
+}
+
+p {
+    color: white;
+    font-size: 150%;   
+}
+
+ul {
+    list-style-type: none;
+    padding: 0px;
+}
+
+li {
+    display:inline-block;
+    color: white;
+    font-size: 150%; 
+    font-weight: bold;
+    margin: 0px 20px; 
+    border: 2px, solid, white;
+    border-radius: 100px;
+    padding: 5px 30px;
+
+}
+
+/* /////////////////////////////////////// */
+/*   end of styling for normal html tags   */
+/* /////////////////////////////////////// */
+
+
+/* ////////////////////////////// */
+/*   styling for custom classes   */
+/* ////////////////////////////// */
+.center {
+    max-width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.center p {
+    max-width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    font-weight: bold;
+}
+
+.main-word-container {
+    position: relative;
+}
+
+.main-word {
+    font-size: 500%;
+    font-weight: bold;
+
+    /* syntax: h-shadow, v-shadow, blur-radius, color*/
+    text-shadow: 0px 15px 20px gray;
+
+}
+
+.btn-primary {
+    font-size: 90%;
+    line-height: 1em;
+    font-weight: bold;
+    white-space: nowrap;
+    
+    /* box stats */
+    margin-top: 30px;
+    border-radius: 100px; /* rounds out edges */
+    padding: 15px 40px;
+
+    /* background-image: linear-gradient(to right, var(--color-white) 0%, var(--color-white) 50%, var(--color-primary) 50%, var(--color-primary) 100%);
+    color: var(--color-white); */
+    background-color: red;
+    transition: all .2s;
+}
+
+.btn-primary:hover {
+    transform: scale(1.1);
+    /* background-color: red;  */
+}
+
+.btn-primary:active {
+    transition: all 0.1s;
+    transform: scale(1.0);
+    background-color: white;
+}
+/* settings for text inside a div button */
+.btn-primary p {
+    margin: 0px 0px;
+    transition: all 0.1s;
+    text-shadow: 0 0 5px black ;
+    pointer-events: none;
+    user-select: none;
+}
+
+.difficulty-select {
+    margin-top: 60px;
+}
+
+
+.fade-in-from-top {
+    animation: 2s fadeInFromTop ease;
+}
+
+.fade-in-from-bottom {
+    animation: 2s fadeInFromBottom ease;
+}
+
+.hide {
+    display: none;
+}
+
+/* ///////////////////////////////////// */
+/*   end of styling for custom classes   */
+/* ///////////////////////////////////// */
+
+/* /////////////////////// */
+/*   styling based on id   */
+/* /////////////////////// */
+
+
+/* //////////////////////////// */
+/*   keyframes for animations   */
+/* //////////////////////////// */
+@keyframes fadeInFromTop {
+    from { 
+        opacity: 0; 
+        transform: translateY(-30px);
+    }
+    to { 
+        opacity: 1;
+        transform: translateY(0%); 
+    }
+}
+
+@keyframes fadeInFromBottom {
+    0% { 
+        opacity: 0; 
+        transform: translateY(30px);
+    }
+    /* 50% {
+        opacity: 0; 
+        transform: translateY(25%);
+    } */
+    100% { 
+        opacity: 1;
+        transform: translateY(0%); 
+    }
+}
