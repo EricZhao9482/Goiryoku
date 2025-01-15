@@ -3,12 +3,14 @@ import MainWord from './components/MainWord'
 import Subsection from './components/Subsection'
 import BeginButton from './components/BeginButton'
 import DifficultySelect from './components/DifficultySelect'
-
+import JPDict from './components/JPDict'
 import './css/styling.css'
 
 function App() {
 
   const [testValue, setTestValue] = useState(0);
+
+  const jpdict = new JPDict();
 
   // handles difficulty levels from N5-N1 as a string. 
   // These states are passed into the DifficultySelect component
