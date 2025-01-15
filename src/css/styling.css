@@ -26,11 +26,23 @@ li {
     color: white;
     font-size: 150%; 
     font-weight: bold;
+    text-shadow: 0 0 5px black;
+    user-select: none;  /* disables text highlighting */
     margin: 0px 20px; 
     border: 2px, solid, white;
     border-radius: 100px;
     padding: 5px 30px;
+    transition: all 0.4s;
+}
 
+li:hover {
+    transform: scale(1.1);
+}
+
+li:active {
+    transition: all 0.1s;
+    transform: scale(1.0);
+    background-color: white;
 }
 
 /* /////////////////////////////////////// */
@@ -109,6 +121,9 @@ li {
     margin-top: 60px;
 }
 
+.difficulty-selected {
+    border-color: red;
+}
 
 .fade-in-from-top {
     animation: 2s fadeInFromTop ease;
