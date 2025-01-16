@@ -41,8 +41,14 @@ function App() {
   // I need to use the useEffect hook which gets called after everytime the specified state gets updated
   // in this case, it is selectedDifficulties
   useEffect(() => {
-     console.log("selected diff: " + selectedDifficulties);
-    }, [selectedDifficulties]);
+    console.log("selected diff: " + selectedDifficulties);
+    // const fetchWord = async () => {
+    //   let word = jpdict.getWordGivenListOfDiff(selectedDifficulties).then(word=>{return word}).then(word=>{console.log(word)});
+    //   // console.log(word);
+    //   return word;
+    // }
+    // console.log("fetched word: " + fetchWord());
+    }, [selectedDifficulties, jpdict]);
 
   function testFunc() {
     setTestValue(testValue+1);
