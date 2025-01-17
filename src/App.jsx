@@ -9,13 +9,15 @@ import './css/styling.css'
 
 function App() {
 
+  // state to show the word being displayed. default to 語彙力 for the homescreen
   const [currentWord, setCurrentWord] = useState("語彙力");
-
-  const jpdict = new JPDict();
 
   // handles difficulty levels from N5-N1 as a string. 
   // These states are passed into the DifficultySelect component
   const [selectedDifficulties, setSelectedDifficulties] = useState([]);
+
+  // state that keeps track of what info to display depending on if you're on homescreen or not
+  const [onHomeScreen, setOnHomeScreen] = useState(true);
 
   // anonymous function used to update the difficulty selection
   // This function gets passed down to the DifficultySelect component
@@ -37,6 +39,8 @@ function App() {
     }
     setSelectedDifficulties(difficulties)  
   } 
+
+  // const handleBeginClick = ()
 
   // function that gets a random word given the current selected difficulties
     async function getWordGivenListOfDiff(diffLvls) {
@@ -93,15 +97,15 @@ function App() {
     //   return word;
     // }
     // console.log("fetched word: " + fetchWord());
-    }, [selectedDifficulties, jpdict]);
+    }, [selectedDifficulties]);
 
 
   return (
     <>
       <MainWord currentWord={currentWord}/>
-      <Subsection />
-      <DifficultySelect updateDiffSelectFunc={updateDifficultySelection}/>
-      <BeginButton onClickFunc={()=>getWordGivenListOfDiff(selectedDifficulties)}/>
+      <Subsection onHomeScreen={onHomeScreen}/>
+      <DifficultySelect onHomeScreen={onHomeScreen} updateDiffSelectFunc={updateDifficultySelection}/>
+      <BeginButton onHomeScreen={onHomeScreen} onClickFunc={()=>getWordGivenListOfDiff(selectedDifficulties)}/>
     </>
   )
 }

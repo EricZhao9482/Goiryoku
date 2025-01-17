@@ -1,6 +1,6 @@
 import { useState } from 'react'
 // eslint-disable-next-line react/prop-types
-function DifficultySelect( {updateDiffSelectFunc} ) {
+function DifficultySelect( {onHomeScreen, updateDiffSelectFunc} ) {
     
     const difficultyLevels = ["N5", "N4", "N3", "N2", "N1"];
     
@@ -35,7 +35,7 @@ function DifficultySelect( {updateDiffSelectFunc} ) {
 
     return (
         <>
-        <div className="center difficulty-select fade-in-from-bottom">
+        <div className={`center difficulty-select ${onHomeScreen ? "fade-in-from-bottom" : "hide"}`}>
             <p className="select-msg" > Select your difficulty levels</p>
             <ul>
                 {difficultyLevels.map( (diffLvl) => (

@@ -1,9 +1,9 @@
 
 // eslint-disable-next-line react/prop-types
-function BeginButton({onClickFunc}) {
+function BeginButton({onHomeScreen, onClickFunc}) {
     
     return (
-        <div id="begin-btn" className="center btn-primary fade-in-from-bottom" onClick={onClickFunc}>
+        <div id="begin-btn" className={`center btn-primary ${onHomeScreen ? "fade-in-from-bottom" : "hide"}`} onClick={onClickFunc}>
             <p>Begin</p>
         </div>
     )
