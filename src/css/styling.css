@@ -134,7 +134,7 @@ li:active {
 }
 
 .hide {
-    display: none;
+    display: none !important;
 }
 
 /* ///////////////////////////////////// */
@@ -144,7 +144,12 @@ li:active {
 /* /////////////////////// */
 /*   styling based on id   */
 /* /////////////////////// */
-
+#kdk-buttons-container {
+    width: 100%;
+    align-items:flex-start;
+    justify-content: center;
+    display:inline
+}
 
 /* //////////////////////////// */
 /*   keyframes for animations   */

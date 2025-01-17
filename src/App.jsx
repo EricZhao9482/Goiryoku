@@ -3,7 +3,7 @@ import MainWord from './components/MainWord'
 import Subsection from './components/Subsection'
 import BeginButton from './components/BeginButton'
 import DifficultySelect from './components/DifficultySelect'
-import JPDict from './components/JPDict'
+import KnowDontKnowButtons from './components/KnowDontKnowButtons'
 import Papa from "papaparse";
 import './css/styling.css'
 
@@ -40,50 +40,60 @@ function App() {
     setSelectedDifficulties(difficulties)  
   } 
 
-  // const handleBeginClick = ()
+  // anon function that starts the game when the begin button is clicked
+  const handleBeginClick = () => {
+    setOnHomeScreen(false);
+    getWordGivenListOfDiff(selectedDifficulties);
+  }
 
   // function that gets a random word given the current selected difficulties
-    async function getWordGivenListOfDiff(diffLvls) {
+  // and sets the current word to be displayed to the retrieved word
+  async function getWordGivenListOfDiff(diffLvls) {
 
-        // first check if the given array length to make sure it isn't empty
-        let arrayLen = diffLvls.length;
+      // first check if the given array length to make sure it isn't empty
+      let arrayLen = diffLvls.length;
 
-        // if it is empty, default to all difficulties selected
-        if (arrayLen === 0) {
-            diffLvls = ["N5", "N4", "N3", "N2", "N1"];
-        }
+      // if it is empty, default to all difficulties selected
+      if (arrayLen === 0) {
+          diffLvls = ["N5", "N4", "N3", "N2", "N1"];
+      }
 
-        // get random diff from list
-        let randomDiff = diffLvls[Math.floor(Math.random()*diffLvls.length)];
+      // get random diff from list
+      let randomDiff = diffLvls[Math.floor(Math.random()*diffLvls.length)];
 
-        let csvFile = randomDiff + ".csv";
+      let csvFile = randomDiff + ".csv";
 
-        const filePath = "vocabulary/" + csvFile;
+      const filePath = "vocabulary/" + csvFile;
 
-        // Read the CSV file. these are await functs so this method needs to be labeled as async
-        const response = await fetch(filePath); // Fetch the file
-        const text = await response.text(); // Get the text content
-      
-        // Parse the CSV data
-        Papa.parse(text, {
-            // if parsing was successful 
-            complete: (results) => {
-                let resultsData = results.data;  // the entire csv file represented as an array
-                let resultsLen = resultsData.length;  
-                
-                // generate a random index to pull from the array
-                // (resultsLen-1) = the range from 1 to the length of results 
-                // +1 ensures we don't pull from the header of the csv 
-                let randomIndex = Math.floor(Math.random()*(resultsLen-1)) + 1;
-                console.log("jp dict result: " + resultsData[randomIndex]);
-                setCurrentWord(resultsData[randomIndex][2]);
-                return resultsData[randomIndex];
-            },
-            error: (err) => {
-              console.error("Error parsing CSV:", err);
-            },
-          });
-        return [];
+      // Read the CSV file. these are await functs so this method needs to be labeled as async
+      const response = await fetch(filePath); // Fetch the file
+      const text = await response.text(); // Get the text content
+    
+      // Parse the CSV data
+      Papa.parse(text, {
+          // if parsing was successful 
+          complete: (results) => {
+              let resultsData = results.data;  // the entire csv file represented as an array
+              let resultsLen = resultsData.length;  
+              
+              // generate a random index to pull from the array
+              // (resultsLen-1) = the range from 1 to the length of results 
+              // +1 ensures we don't pull from the header of the csv 
+              let randomIndex = Math.floor(Math.random()*(resultsLen-1)) + 1;
+              console.log("jp dict result: " + resultsData[randomIndex]);
+              setCurrentWord(resultsData[randomIndex][2]);
+              
+              // TODO: add more logic here to keep track of all the words
+              // also make sure that there are no duplicate words that show up (edge case) 
+
+          },
+          error: (err) => {
+
+            // TODO: add fail case here and communicate that to the user
+
+            console.error("Error parsing CSV:", err);
+          },
+        });
     }
 
   // useState is asynch so in order to reliably use it for printing out stuff to check state
@@ -105,7 +115,9 @@ function App() {
       <MainWord currentWord={currentWord}/>
       <Subsection onHomeScreen={onHomeScreen}/>
       <DifficultySelect onHomeScreen={onHomeScreen} updateDiffSelectFunc={updateDifficultySelection}/>
-      <BeginButton onHomeScreen={onHomeScreen} onClickFunc={()=>getWordGivenListOfDiff(selectedDifficulties)}/>
+      <BeginButton onHomeScreen={onHomeScreen} onClickFunc={handleBeginClick}/>
+
+      <KnowDontKnowButtons onHomeScreen={onHomeScreen} />
     </>
   )
 }
