@@ -9,8 +9,10 @@ import './css/styling.css'
 
 function App() {
 
+  const goiryoku = {jlptLevel:"N/A", word:"語彙力", reading:"ごいりょく", englishMeaning:"(the extent of) one's vocabulary"};
+
   // state to show the word being displayed. default to 語彙力 for the homescreen
-  const [currentWord, setCurrentWord] = useState("語彙力");
+  const [currentWord, setCurrentWord] = useState(goiryoku);
 
   // handles difficulty levels from N5-N1 as a string. 
   // These states are passed into the DifficultySelect component
@@ -48,6 +50,7 @@ function App() {
 
   // function that gets a random word given the current selected difficulties
   // and sets the current word to be displayed to the retrieved word
+  // TODO: make sure that there are no duplicate words that show up (edge case) 
   async function getWordGivenListOfDiff(diffLvls) {
 
       // first check if the given array length to make sure it isn't empty
@@ -82,10 +85,7 @@ function App() {
               let randomIndex = Math.floor(Math.random()*(resultsLen-1)) + 1;
               const retrievedWordDetails = resultsData[randomIndex]
               console.log(retrievedWordDetails);
-              setCurrentWord(retrievedWordDetails[2]);
-              
-              // TODO: add more logic here to keep track of all the words
-              // also make sure that there are no duplicate words that show up (edge case) 
+              // setCurrentWord(retrievedWordDetails[2]);
 
               // create an object that represents the word details to store in state later
               const wordDetails = {};
@@ -102,8 +102,7 @@ function App() {
                 wordDetails.reading = retrievedWordDetails[1];
               }
               wordDetails.englishMeaning = retrievedWordDetails[3];
-              
-              console.log(wordDetails);
+              setCurrentWord(wordDetails);
           },
           error: (err) => {
             setCurrentWord("Failed to retrieve word");
@@ -117,13 +116,15 @@ function App() {
   // in this case, it is selectedDifficulties
   useEffect(() => {
     console.log("selected diff: " + selectedDifficulties);
+    console.log("current word: ");
+    console.log(currentWord);
     // const fetchWord = async () => {
     //   let word = jpdict.getWordGivenListOfDiff(selectedDifficulties).then(word=>{return word}).then(word=>{console.log(word)});
     //   // console.log(word);
     //   return word;
     // }
     // console.log("fetched word: " + fetchWord());
-    }, [selectedDifficulties]);
+    }, [selectedDifficulties, currentWord]);
 
 
   return (

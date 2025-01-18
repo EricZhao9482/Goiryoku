@@ -1,5 +1,5 @@
+/* eslint-disable react/prop-types */
 
-// eslint-disable-next-line react/prop-types
 function MainWord({currentWord}) {
 
     // let display = "";
@@ -9,7 +9,7 @@ function MainWord({currentWord}) {
 
     return (
         <div id="main-word-stage" className="center main-word-container">
-            <p id="main-word" className="center main-word fade-in-from-top">{currentWord}</p>
+            <p id="main-word" className="center main-word fade-in-from-top">{currentWord.word}</p>
         </div>
     )
 }
