@@ -80,17 +80,33 @@ function App() {
               // (resultsLen-1) = the range from 1 to the length of results 
               // +1 ensures we don't pull from the header of the csv 
               let randomIndex = Math.floor(Math.random()*(resultsLen-1)) + 1;
-              console.log("jp dict result: " + resultsData[randomIndex]);
-              setCurrentWord(resultsData[randomIndex][2]);
+              const retrievedWordDetails = resultsData[randomIndex]
+              console.log(retrievedWordDetails);
+              setCurrentWord(retrievedWordDetails[2]);
               
               // TODO: add more logic here to keep track of all the words
               // also make sure that there are no duplicate words that show up (edge case) 
 
+              // create an object that represents the word details to store in state later
+              const wordDetails = {};
+
+              wordDetails.jlptLevel = randomDiff;
+              // if there is no kanji for the word
+              if (retrievedWordDetails[2] === '' || retrievedWordDetails[2] === null) {
+                // set the word to the hiragana reading and the reading to be blank
+                wordDetails.word = retrievedWordDetails[1];
+                wordDetails.reading = '';
+              } else {
+                // otherwise word will be displayed with kanji and the reading with hiragana 
+                wordDetails.word = retrievedWordDetails[2];
+                wordDetails.reading = retrievedWordDetails[1];
+              }
+              wordDetails.englishMeaning = retrievedWordDetails[3];
+              
+              console.log(wordDetails);
           },
           error: (err) => {
-
-            // TODO: add fail case here and communicate that to the user
-
+            setCurrentWord("Failed to retrieve word");
             console.error("Error parsing CSV:", err);
           },
         });
