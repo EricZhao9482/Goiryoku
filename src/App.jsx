@@ -14,12 +14,16 @@ function App() {
   // state to show the word being displayed. default to 語彙力 for the homescreen
   const [currentWord, setCurrentWord] = useState(goiryoku);
 
+  // state that keeps track of what info to display depending on if you're on homescreen or not
+  const [onHomeScreen, setOnHomeScreen] = useState(true);
+
   // handles difficulty levels from N5-N1 as a string. 
   // These states are passed into the DifficultySelect component
   const [selectedDifficulties, setSelectedDifficulties] = useState([]);
 
-  // state that keeps track of what info to display depending on if you're on homescreen or not
-  const [onHomeScreen, setOnHomeScreen] = useState(true);
+  // these two states are an array of wordDetail objects of all the words the user knows and dont knows
+  const [knownWords, setKnownWords] = useState([]);
+  const [unknownWords, setUnknownWords] = useState([]);
 
   // anonymous function used to update the difficulty selection
   // This function gets passed down to the DifficultySelect component
@@ -110,21 +114,32 @@ function App() {
           },
         });
     }
+  
+  // a function that handles things when the know or dont know buttons are clicked
+  // this will add the current word to its respective list and then generate a new word to be displayed
+  // know argument is a boolean
+  const handleKnowDontKnowClick = (know) => {
+    if (know) {
+      setKnownWords([...knownWords, currentWord]);
+    } else {
+      setUnknownWords([...unknownWords, currentWord]);
+    }
+    getWordGivenListOfDiff(selectedDifficulties);
+  }
 
   // useState is asynch so in order to reliably use it for printing out stuff to check state
   // I need to use the useEffect hook which gets called after everytime the specified state gets updated
-  // in this case, it is selectedDifficulties
+  // using this for debugging purposes
   useEffect(() => {
+    console.log("-----------------------------------------")
     console.log("selected diff: " + selectedDifficulties);
     console.log("current word: ");
     console.log(currentWord);
-    // const fetchWord = async () => {
-    //   let word = jpdict.getWordGivenListOfDiff(selectedDifficulties).then(word=>{return word}).then(word=>{console.log(word)});
-    //   // console.log(word);
-    //   return word;
-    // }
-    // console.log("fetched word: " + fetchWord());
-    }, [selectedDifficulties, currentWord]);
+    console.log("known words: ");
+    console.log(knownWords);
+    console.log("unknown words:")
+    console.log(unknownWords);
+    }, [selectedDifficulties, currentWord, knownWords, unknownWords]);
 
 
   return (
@@ -134,7 +149,7 @@ function App() {
       <DifficultySelect onHomeScreen={onHomeScreen} updateDiffSelectFunc={updateDifficultySelection}/>
       <BeginButton onHomeScreen={onHomeScreen} onClickFunc={handleBeginClick}/>
 
-      <KnowDontKnowButtons onHomeScreen={onHomeScreen} />
+      <KnowDontKnowButtons onHomeScreen={onHomeScreen} onClickFunc={handleKnowDontKnowClick}/>
     </>
   )
 }
