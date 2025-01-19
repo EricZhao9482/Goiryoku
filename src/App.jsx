@@ -120,9 +120,9 @@ function App() {
   // know argument is a boolean
   const handleKnowDontKnowClick = (know) => {
     if (know) {
-      setKnownWords([...knownWords, currentWord]);
+      setKnownWords([currentWord, ...knownWords]);
     } else {
-      setUnknownWords([...unknownWords, currentWord]);
+      setUnknownWords([currentWord, ...unknownWords]);
     }
     getWordGivenListOfDiff(selectedDifficulties);
   }
