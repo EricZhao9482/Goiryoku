@@ -4,6 +4,7 @@ import Subsection from './components/Subsection'
 import BeginButton from './components/BeginButton'
 import DifficultySelect from './components/DifficultySelect'
 import KnowDontKnowButtons from './components/KnowDontKnowButtons'
+import WordLists from './components/WordLists'
 import Papa from "papaparse";
 import './css/styling.css'
 
@@ -150,6 +151,7 @@ function App() {
       <BeginButton onHomeScreen={onHomeScreen} onClickFunc={handleBeginClick}/>
 
       <KnowDontKnowButtons onHomeScreen={onHomeScreen} onClickFunc={handleKnowDontKnowClick}/>
+      <WordLists onHomeScreen={onHomeScreen} knownWordsList={knownWords} unknownWordsList={unknownWords}/>
     </>
   )
 }

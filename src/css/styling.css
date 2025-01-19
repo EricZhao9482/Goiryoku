@@ -45,6 +45,31 @@ li:active {
     background-color: white;
 }
 
+table {
+    margin: 20px;
+    border: 2px solid white;
+    border-radius: 20px;
+    padding: 10px;
+    table-layout: auto; 
+}
+
+th {
+    color: white;
+    font-weight: bold;
+    text-align: left;
+    padding: 0px 10px; /*vertical horizontal*/
+}
+
+tr {
+    padding: 2px;
+}
+
+td {
+    color: white;
+    padding: 0px 10px;  /*vertical horizontal*/
+}
+
+
 /* /////////////////////////////////////// */
 /*   end of styling for normal html tags   */
 /* /////////////////////////////////////// */
@@ -170,6 +195,12 @@ li:active {
 
 .hide {
     display: none !important;
+}
+
+.word-list-container {
+    display: flex;
+    border-collapse: collapse;
+    flex-wrap: wrap-reverse;
 }
 
 /* ///////////////////////////////////// */
