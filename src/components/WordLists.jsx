@@ -2,6 +2,8 @@
 
 function WordLists( {onHomeScreen, knownWordsList, unknownWordsList} ) {
 
+    const definition_col = "definition-col";
+
     return (
         <div id="word-list-container" className={`center word-list-container ${onHomeScreen ? "hide" : "fade-in-from-bottom"}`}>
             <div>
@@ -12,14 +14,14 @@ function WordLists( {onHomeScreen, knownWordsList, unknownWordsList} ) {
                             <th>言葉</th>
                             <th>読み方</th>
                             <th>JLPT</th>
-                            <th>英訳</th>
+                            <th className={definition_col}>英訳</th>
                         </tr>
                         {knownWordsList.map( (word) => (
                             <tr key={word.word}>
                                 <td>{word.word}</td>
                                 <td>{word.reading}</td>
                                 <td>{word.jlptLevel}</td>
-                                <td>{word.englishMeaning}</td>
+                                <td className={definition_col}>{word.englishMeaning}</td>
                             </tr>
                         ))
                         }
@@ -34,14 +36,14 @@ function WordLists( {onHomeScreen, knownWordsList, unknownWordsList} ) {
                             <th>言葉</th>
                             <th>読み方</th>
                             <th>JLPT</th>
-                            <th>英訳</th>
+                            <th className={definition_col}>英訳</th>
                         </tr>
                         {unknownWordsList.map( (word) => (
                             <tr key={word.word}>
                                 <td>{word.word}</td>
                                 <td>{word.reading}</td>
                                 <td>{word.jlptLevel}</td>
-                                <td>{word.englishMeaning}</td>
+                                <td className={definition_col}>{word.englishMeaning}</td>
                             </tr>
                         ))
                         }
