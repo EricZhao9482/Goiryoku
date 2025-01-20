@@ -7,41 +7,45 @@ function WordLists( {onHomeScreen, knownWordsList, unknownWordsList} ) {
             <div>
                 <p>Known Words</p>
                 <table id="known-words-table">
-                    <tr>
-                        <th>言葉</th>
-                        <th>読み方</th>
-                        <th>JLPT</th>
-                        <th>英訳</th>
-                    </tr>
-                    {knownWordsList.map( (word) => (
-                        <tr key={word.word}>
-                            <td>{word.word}</td>
-                            <td>{word.reading}</td>
-                            <td>{word.jlptLevel}</td>
-                            <td>{word.englishMeaning}</td>
+                    <tbody>
+                        <tr>
+                            <th>言葉</th>
+                            <th>読み方</th>
+                            <th>JLPT</th>
+                            <th>英訳</th>
                         </tr>
-                    )
-                )}
+                        {knownWordsList.map( (word) => (
+                            <tr key={word.word}>
+                                <td>{word.word}</td>
+                                <td>{word.reading}</td>
+                                <td>{word.jlptLevel}</td>
+                                <td>{word.englishMeaning}</td>
+                            </tr>
+                        ))
+                        }
+                    </tbody>
                 </table>
             </div>
             <div>
                 <p>Unknown Words</p>
                 <table id="unknown-words-table">
-                    <tr>
-                        <th>言葉</th>
-                        <th>読み方</th>
-                        <th>JLPT</th>
-                        <th>英訳</th>
-                    </tr>
-                    {unknownWordsList.map( (word) => (
-                        <tr key={word.word}>
-                            <td>{word.word}</td>
-                            <td>{word.reading}</td>
-                            <td>{word.jlptLevel}</td>
-                            <td>{word.englishMeaning}</td>
+                    <tbody>
+                        <tr>
+                            <th>言葉</th>
+                            <th>読み方</th>
+                            <th>JLPT</th>
+                            <th>英訳</th>
                         </tr>
-                    )
-                )}
+                        {unknownWordsList.map( (word) => (
+                            <tr key={word.word}>
+                                <td>{word.word}</td>
+                                <td>{word.reading}</td>
+                                <td>{word.jlptLevel}</td>
+                                <td>{word.englishMeaning}</td>
+                            </tr>
+                        ))
+                        }
+                    </tbody>
                 </table>
             </div>
         </div>

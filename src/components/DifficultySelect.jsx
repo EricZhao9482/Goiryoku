@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 // eslint-disable-next-line react/prop-types
 function DifficultySelect( {onHomeScreen, updateDiffSelectFunc} ) {
     
@@ -11,7 +11,7 @@ function DifficultySelect( {onHomeScreen, updateDiffSelectFunc} ) {
                                 ["N3", false],
                                 ["N2", false],
                                 ["N1", false]
-                                ] )
+                                ] );
     
     // a map that will keep track of which difficulties have been selected via boolean
     // this map later gets referred to when adding styling 
@@ -33,6 +33,7 @@ function DifficultySelect( {onHomeScreen, updateDiffSelectFunc} ) {
         
     } 
 
+    // useEffect(()=> {console.log(selected)}, [selected])
 
     return (
         <>
