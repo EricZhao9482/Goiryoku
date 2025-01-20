@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import WordList from "./WordList";
-function WordLists( {onHomeScreen, knownWordsList, unknownWordsList} ) {
+function WordListsSection( {onHomeScreen, knownWordsList, unknownWordsList} ) {
 
     return (
         <div id="word-list-container" className={`center word-list-container ${onHomeScreen ? "hide" : "fade-in-from-bottom"}`}>
@@ -10,4 +10,4 @@ function WordLists( {onHomeScreen, knownWordsList, unknownWordsList} ) {
     )
 }
 
-export default WordLists;
+export default WordListsSection;
