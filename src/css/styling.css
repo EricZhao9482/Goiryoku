@@ -56,9 +56,9 @@ table {
 
 th {
     color: white;
-    font-weight: bold;
+    /* font-weight: bold; */
     text-align: left;
-    font-size: 110%;
+    font-size: 120%;
     padding: 0px 10px; /*vertical horizontal*/
 }
 
@@ -70,9 +70,22 @@ tr {
 
 td {
     color: white;
+    font-size: 120%;
     padding: 0px 10px;  /*vertical horizontal*/
     word-wrap: break-word;  /* for line breaking once a specified column length is surpassed*/
     border-top: 1px solid white;
+}
+
+.word-col {
+    width: 80px;
+}
+
+.reading-col {
+    width: 100px;
+}
+
+.jlpt-col {
+    width: 20px;
 }
 
 .definition-col {
