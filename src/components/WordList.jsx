@@ -1,11 +1,11 @@
 /* eslint-disable react/prop-types */
-function WordList( {ListName, wordList} ) {
+function WordList( {listName, wordList} ) {
 
     const definition_col = "definition-col";
 
     return (
         <div>
-            <p>{ListName}</p>
+            <p>{listName}</p>
             <table>
                 <tbody>
                     <tr>
