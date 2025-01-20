@@ -199,7 +199,6 @@ td {
 
 .word-list-container {
     display: flex;
-    border-collapse: collapse;
     flex-wrap: wrap-reverse;
 }
 

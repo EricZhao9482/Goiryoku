@@ -4,6 +4,7 @@ function DifficultySelect( {onHomeScreen, updateDiffSelectFunc} ) {
     
     const difficultyLevels = ["N5", "N4", "N3", "N2", "N1"];
     
+    // TODO: make this use the map function for scalability
     let selectedMap = new Map( [
                                 ["N5", false],
                                 ["N4", false],
