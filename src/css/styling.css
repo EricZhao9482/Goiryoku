@@ -70,7 +70,7 @@ tr {
 
 td {
     color: white;
-    font-size: 120%;
+    font-size: 110%;
     padding: 5px 10px;  /*vertical horizontal*/
     word-wrap: break-word;  /* for line breaking once a specified column length is surpassed*/
     border-top: 1px solid white;
@@ -81,11 +81,11 @@ td {
 }
 
 .word-col {
-    width: 80px;
+    width: 90px;
 }
 
 .reading-col {
-    width: 100px;
+    width: 110px;
 }
 
 .jlpt-col {
