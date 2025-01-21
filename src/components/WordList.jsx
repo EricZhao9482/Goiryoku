@@ -15,7 +15,7 @@ function WordList( {listName, wordList} ) {
 
     return (
         <div>
-            <p>{listNameFormatting}</p>
+            <p className="list-name">{listNameFormatting}</p>
             <table>
                 <tbody>
                     <tr>
@@ -24,8 +24,8 @@ function WordList( {listName, wordList} ) {
                         <th className={jlpt_col}>JLPT</th>
                         <th className={definition_col}>英訳</th>
                     </tr>
-                    {wordList.map( (word) => (
-                        <tr key={word.word}>
+                    {wordList.map( (word, index) => (
+                        <tr key={word.word} className={index === 0 ? "list-item-fade-in" : ""}>
                             <td className={word_col}>{word.word}</td>
                             <td className={reading_col}>{word.reading}</td>
                             <td className={jlpt_col}>{word.jlptLevel}</td>
