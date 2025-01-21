@@ -120,11 +120,16 @@ function App() {
   // this will add the current word to its respective list and then generate a new word to be displayed
   // know argument is a boolean
   const handleKnowDontKnowClick = (know) => {
-    if (know) {
+    // if the user clicks on the わかる button and the word does not already exist in the knownWords list 
+    // then add it to the list of known words
+    if (know && !knownWords.some( (listWordDetails) => {listWordDetails.word === currentWord.word})) {
       setKnownWords([currentWord, ...knownWords]);
-    } else {
+    } // otherwise that means the user clicked わからない so
+    // we will check to ensure the current word does not already exist in the unknown words list before adding
+    else if (!unknownWords.some( (listWordDetails) => {listWordDetails.word === currentWord.word} )) {
       setUnknownWords([currentWord, ...unknownWords]);
     }
+    // finally cycle a new word into the current word 
     getWordGivenListOfDiff(selectedDifficulties);
   }
 
