@@ -1,2 +1,1 @@
-- make the definition text has a space in between the commas
 - add js docs to the rest of the components

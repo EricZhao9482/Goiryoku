@@ -106,7 +106,10 @@ function App() {
                 wordDetails.word = retrievedWordDetails[2];
                 wordDetails.reading = retrievedWordDetails[1];
               }
-              wordDetails.englishMeaning = retrievedWordDetails[3];
+              // some definitions in the csv file have commas with no spaces after them 
+              // which results in a really long single line which does not line break in the table
+              // we will call this helper function to ensure a space comes after every comma
+              wordDetails.englishMeaning = fix_commas(retrievedWordDetails[3]);
               setCurrentWord(wordDetails);
           },
           error: (err) => {
@@ -115,6 +118,14 @@ function App() {
           },
         });
     }
+
+  // a helper function that ensures commas have a space after them
+  const fix_commas = (s) => {
+    const parts = s.split(","); 
+    return parts
+      .map((v) => v.trim())
+      .join(", ")
+  }
   
   // a function that handles things when the know or dont know buttons are clicked
   // this will add the current word to its respective list and then generate a new word to be displayed
