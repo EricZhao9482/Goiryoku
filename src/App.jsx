@@ -4,6 +4,7 @@ import Subsection from './components/Subsection'
 import BeginButton from './components/BeginButton'
 import DifficultySelect from './components/DifficultySelect'
 import KnowDontKnowButtons from './components/KnowDontKnowButtons'
+import BackButton from './components/BackButton'
 import WordListsSection from './components/WordListsSection'
 import Papa from "papaparse";
 import './css/styling.css'
@@ -144,29 +145,35 @@ function App() {
     getWordGivenListOfDiff(selectedDifficulties);
   }
 
+  // a function that changes the set onHomeScreen state to true
+  const handleBackButtonClick = () => {
+    setOnHomeScreen(true);
+  }
+
   // useState is asynch so in order to reliably use it for printing out stuff to check state
   // I need to use the useEffect hook which gets called after everytime the specified state gets updated
   // using this for debugging purposes
-  useEffect(() => {
-    console.log("-----------------------------------------")
-    console.log("selected diff: " + selectedDifficulties);
-    console.log("current word: ");
-    console.log(currentWord);
-    console.log("known words: ");
-    console.log(knownWords);
-    console.log("unknown words:")
-    console.log(unknownWords);
-    }, [selectedDifficulties, currentWord, knownWords, unknownWords]);
+  // useEffect(() => {
+  //   console.log("-----------------------------------------")
+  //   console.log("selected diff: " + selectedDifficulties);
+  //   console.log("current word: ");
+  //   console.log(currentWord);
+  //   console.log("known words: ");
+  //   console.log(knownWords);
+  //   console.log("unknown words:")
+  //   console.log(unknownWords);
+  //   }, [selectedDifficulties, currentWord, knownWords, unknownWords]);
 
 
   return (
     <>
-      <MainWord currentWord={currentWord}/>
+      <MainWord onHomeScreen={onHomeScreen} currentWord={currentWord}/>
       <Subsection onHomeScreen={onHomeScreen}/>
       <DifficultySelect onHomeScreen={onHomeScreen} updateDiffSelectFunc={updateDifficultySelection}/>
       <BeginButton onHomeScreen={onHomeScreen} onClickFunc={handleBeginClick}/>
 
       <KnowDontKnowButtons onHomeScreen={onHomeScreen} onClickFunc={handleKnowDontKnowClick}/>
+      <BackButton onHomeScreen={onHomeScreen} onClickFunc={handleBackButtonClick} />
       <WordListsSection onHomeScreen={onHomeScreen} knownWordsList={knownWords} unknownWordsList={unknownWords}/>
     </>
   )
