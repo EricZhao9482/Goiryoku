@@ -56,7 +56,6 @@ function App() {
 
   // function that gets a random word given the current selected difficulties
   // and sets the current word to be displayed to the retrieved word
-  // TODO: make sure that there are no duplicate words that show up (edge case) 
   async function getWordGivenListOfDiff(diffLvls) {
 
       // first check if the given array length to make sure it isn't empty
@@ -90,8 +89,7 @@ function App() {
               // +1 ensures we don't pull from the header of the csv 
               let randomIndex = Math.floor(Math.random()*(resultsLen-1)) + 1;
               const retrievedWordDetails = resultsData[randomIndex]
-              console.log(retrievedWordDetails);
-              // setCurrentWord(retrievedWordDetails[2]);
+              // console.log(retrievedWordDetails);
 
               // create an object that represents the word details to store in state later
               const wordDetails = {};
