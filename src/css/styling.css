@@ -17,6 +17,9 @@ p {
 }
 
 ul {
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
     list-style-type: none;
     padding: 0px;
 }
@@ -28,7 +31,7 @@ li {
     font-weight: bold;
     text-shadow: 0 0 5px black;
     user-select: none;  /* disables text highlighting */
-    margin: 0px 20px; 
+    margin: 5px 20px;  /* vertical horizontal */
     border: 2px solid white;
     border-radius: 100px;
     padding: 5px 30px;
