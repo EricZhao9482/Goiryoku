@@ -29,7 +29,7 @@ li {
     text-shadow: 0 0 5px black;
     user-select: none;  /* disables text highlighting */
     margin: 0px 20px; 
-    border: 2px, solid, white;
+    border: 2px solid white;
     border-radius: 100px;
     padding: 5px 30px;
     transition: all 0.4s;
