@@ -1,5 +1,13 @@
 /* eslint-disable react/prop-types */
 import WordList from "./WordList";
+
+/**
+ * 
+ * @param {boolean} onHomeScreen - lets the component know if its on the homescreen or not to determine visibility
+ * @param {Array} knownWordsList - a list of word objects that the user knows 
+ * @param {Array} unknownWordsList - a list of word objects that the user doesn't know
+ * @returns 
+ */
 function WordListsSection( {onHomeScreen, knownWordsList, unknownWordsList} ) {
 
     return (

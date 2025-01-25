@@ -1,5 +1,11 @@
+/* eslint-disable react/prop-types */
 import { useEffect, useState } from 'react'
-// eslint-disable-next-line react/prop-types
+/**
+ * The list of difficulties on the homescreen
+ * @param {boolean} onHomeScreen - lets the component know if its on the homescreen or not to determine visibility
+ * @param {Function} updateDifficultySelection - a function passed down from the app component to update its state
+ * @returns 
+ */
 function DifficultySelect( {onHomeScreen, updateDiffSelectFunc} ) {
     
     const difficultyLevels = ["N5", "N4", "N3", "N2", "N1"];

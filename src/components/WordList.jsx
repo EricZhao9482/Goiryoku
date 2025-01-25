@@ -1,4 +1,11 @@
 /* eslint-disable react/prop-types */
+
+/**
+ * A world list component
+ * @param {string} listName - the list title you want to be displayed 
+ * @param {Array} wordList - the list of word objects {jlptLevel:"", word:"", reading:"", englishMeaning:""} of the words to be displayed
+ * @returns 
+ */
 function WordList( {listName, wordList} ) {
 
     // constants for css styling
@@ -25,6 +32,7 @@ function WordList( {listName, wordList} ) {
                         <th className={definition_col}>英訳</th>
                     </tr>
                     {wordList.map( (word, index) => (
+                        // if the word item is the first element of the list, have it fade in to show it being added
                         <tr key={word.word} className={index === 0 ? "list-item-fade-in" : ""}>
                             <td className={word_col}>{word.word}</td>
                             <td className={reading_col}>{word.reading}</td>

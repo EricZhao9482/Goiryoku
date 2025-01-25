@@ -1,5 +1,9 @@
 /* eslint-disable react/prop-types */
-
+/**
+ * Back button that returns you to the homescreen
+ * @param {boolean} onHomeScreen - lets the component know if its on the homescreen or not to determine visibility   
+ * @returns 
+ */
 function BackButton( {onHomeScreen, onClickFunc} ) {
 
     return (

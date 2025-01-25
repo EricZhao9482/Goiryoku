@@ -1,5 +1,10 @@
+/* eslint-disable react/prop-types */
 
-// eslint-disable-next-line react/prop-types
+/**
+ * Subsection holding the welcome message on the homescreen
+ * @param {boolean} onHomeScreen - lets the component know if its on the homescreen or not to determine visibility
+ * @returns 
+ */
 function Subsection( {onHomeScreen} ) {
 
     return (

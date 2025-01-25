@@ -1,5 +1,11 @@
+/* eslint-disable react/prop-types */
 
-// eslint-disable-next-line react/prop-types
+/**
+ * The begin button that begins the app's gameplay loop
+ * @param {boolean} onHomeScreen - lets the component know if its on the homescreen or not to determine visibility
+ * @param {Function} onClickFunc - the  handleBeginClick function pasted down from the app
+ * @returns 
+ */
 function BeginButton({onHomeScreen, onClickFunc}) {
     
     return (

@@ -14,6 +14,7 @@ function App() {
   const goiryoku = {jlptLevel:"N/A", word:"語彙力", reading:"ごいりょく", englishMeaning:"(the extent of) one's vocabulary"};
 
   // state to show the word being displayed. default to 語彙力 for the homescreen
+  // currentWord will always have the Object structure of {jlptLevel, word, reading, englishMeaning}
   const [currentWord, setCurrentWord] = useState(goiryoku);
 
   // state that keeps track of what info to display depending on if you're on homescreen or not
@@ -27,8 +28,11 @@ function App() {
   const [knownWords, setKnownWords] = useState([]);
   const [unknownWords, setUnknownWords] = useState([]);
 
-  // anonymous function used to update the difficulty selection
-  // This function gets passed down to the DifficultySelect component
+  /**
+   * anonymous function used to update the difficulty selection
+   * This function gets passed down to the DifficultySelect component
+   * @param {string} difficulty - formatted as "N5", "N1", etc
+   */
   const updateDifficultySelection = (difficulty) => {
     
     // make a copy of the array
@@ -48,14 +52,20 @@ function App() {
     setSelectedDifficulties(difficulties)  
   } 
 
-  // anon function that starts the game when the begin button is clicked
+  /**
+   * anon function that starts the game when the begin button is clicked
+   * this function gets passed down to the BeginButton Component
+   */
   const handleBeginClick = () => {
     setOnHomeScreen(false);
     getWordGivenListOfDiff(selectedDifficulties);
   }
 
-  // function that gets a random word given the current selected difficulties
-  // and sets the current word to be displayed to the retrieved word
+  /**
+   * function that gets a random word given the current selected difficulties
+   * and sets the currentWord to be displayed to the retrieved word
+   * @param {String[]} diffLvls - the array of difficulties ie. ["N5","N4","N1"]
+   */
   async function getWordGivenListOfDiff(diffLvls) {
 
       // first check if the given array length to make sure it isn't empty
@@ -112,23 +122,30 @@ function App() {
               setCurrentWord(wordDetails);
           },
           error: (err) => {
-            setCurrentWord("Failed to retrieve word");
+            setCurrentWord({jlptLevel:"N/A", word:"Failed to retrieve word", reading:"", englishMeaning:""});
             console.error("Error parsing CSV:", err);
           },
         });
     }
 
-  // a helper function that ensures commas have a space after them
+  /**
+   * a helper function that ensures commas have a space after them in a given string
+   * @param {string} s - a string fo the contents you want to fix commas for
+   * @returns {string} the fixed string
+   */
   const fix_commas = (s) => {
     const parts = s.split(","); 
     return parts
-      .map((v) => v.trim())
+      .map((v) => v.trim()) // remove any trailing and leading white space from the separated words
       .join(", ")
   }
   
-  // a function that handles things when the know or dont know buttons are clicked
-  // this will add the current word to its respective list and then generate a new word to be displayed
-  // know argument is a boolean
+
+  /**
+   * a function that handles things when the know (わかる) or dont know (わからない) buttons are clicked
+   * this will add the current word to its respective list and then generate a new word to be displayed
+   * @param {boolean} know - true (わかる) or false (わからない) depending on which button gets clicked
+   */
   const handleKnowDontKnowClick = (know) => {
     // if the user clicks on the わかる button and the word does not already exist in the knownWords list 
     // then add it to the list of known words
@@ -143,7 +160,10 @@ function App() {
     getWordGivenListOfDiff(selectedDifficulties);
   }
 
-  // a function that changes the set onHomeScreen state to true
+  /**
+   * when the BackButton is clicked, return to the homescreen
+   * this function gets passed into the BackButton component as its onClick function
+   */
   const handleBackButtonClick = () => {
     setOnHomeScreen(true);
   }
