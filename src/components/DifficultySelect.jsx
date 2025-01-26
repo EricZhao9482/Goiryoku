@@ -8,6 +8,7 @@ import { useEffect, useState } from 'react'
  */
 function DifficultySelect( {onHomeScreen, updateDiffSelectFunc} ) {
     
+    // the difficulty levels correspond to their csv file name so make sure they match
     const difficultyLevels = ["N5", "N4", "N3", "N2", "N1"];
     
     // TODO: make this use the map function for scalability
