@@ -11,14 +11,10 @@ function DifficultySelect( {onHomeScreen, updateDiffSelectFunc} ) {
     // the difficulty levels correspond to their csv file name so make sure they match
     const difficultyLevels = ["N5", "N4", "N3", "N2", "N1"];
     
-    // TODO: make this use the map function for scalability
-    let selectedMap = new Map( [
-                                ["N5", false],
-                                ["N4", false],
-                                ["N3", false],
-                                ["N2", false],
-                                ["N1", false]
-                                ] );
+    // create map for selected state below
+    let selectedMap = new Map(
+        difficultyLevels.map(difficulty => [difficulty, false])
+      );
     
     // a map that will keep track of which difficulties have been selected via boolean
     // this map later gets referred to when adding styling 
