@@ -145,42 +145,6 @@ td {
 
 }
 
-.btn-primary {
-    font-size: 90%;
-    line-height: 1em;
-    font-weight: bold;
-    white-space: nowrap;
-    
-    /* box stats */
-    margin-top: 30px;
-    border-radius: 100px; /* rounds out edges */
-    padding: 15px 40px;
-
-    /* background-image: linear-gradient(to right, var(--color-white) 0%, var(--color-white) 50%, var(--color-primary) 50%, var(--color-primary) 100%);
-    color: var(--color-white); */
-    background-color: red;
-    transition: all .2s;
-}
-
-.btn-primary:hover {
-    transform: scale(1.1);
-    /* background-color: red;  */
-}
-
-.btn-primary:active {
-    transition: all 0.1s;
-    transform: scale(1.0);
-    background-color: white;
-}
-/* settings for text inside a div button */
-.btn-primary p {
-    margin: 0px 0px;
-    transition: all 0.1s;
-    text-shadow: 0 0 5px black ;
-    pointer-events: none;
-    user-select: none;
-}
-
 .btn-secondary {
     font-size: 100%;
     line-height: 1em;
