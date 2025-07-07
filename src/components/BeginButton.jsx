@@ -9,8 +9,8 @@
 function BeginButton({onHomeScreen, onClickFunc}) {
     
     return (
-        <div id="begin-btn" className={`center btn-primary ${onHomeScreen ? "fade-in-from-bottom" : "hide"}`} onClick={onClickFunc}>
-            <p>Begin</p>
+        <div id="begin-btn" className={"center"}>
+            <button className={`btn-secondary ${onHomeScreen ? "fade-in-from-bottom" : "hide"}`} onClick={onClickFunc}>Begin</button>
         </div>
     )
 }

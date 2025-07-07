@@ -193,6 +193,7 @@ function App() {
       <KnowDontKnowButtons onHomeScreen={onHomeScreen} onClickFunc={handleKnowDontKnowClick}/>
       <BackButton onHomeScreen={onHomeScreen} onClickFunc={handleBackButtonClick} />
       <WordListsSection onHomeScreen={onHomeScreen} knownWordsList={knownWords} unknownWordsList={unknownWords}/>
+      <footer>ver 0.8</footer>
     </>
   )
 }

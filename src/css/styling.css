@@ -16,6 +16,15 @@ p {
     font-size: 150%;   
 }
 
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    color: white;
+}
+
+
 ul {
     justify-content: center;
     display: flex;
